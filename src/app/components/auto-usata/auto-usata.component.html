@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>Ricerca automobili usate</h2>
+      <div class="form-group">
+        <label for="prezzoMassimo">Prezzo massimo:</label>
+        <input type="number" class="form-control" id="prezzoMassimo" [(ngModel)]="prezzoMassimo">
+      </div>
+      <button class="btn btn-primary mt-1" (click)="cercaAutomobiliUsate()">Cerca</button>
+      <div class="mt-4">
+        <div *ngIf="automobiliUsate.length === 0" class="alert alert-info">Nessuna automobile usata trovata.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4" *ngIf="automobiliUsate.length > 0">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let a of automobiliUsate">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ a.marca }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ a.modello }}</h6>
+              <p class="card-text">Prezzo: {{ a.prezzo }}</p>
+              <p class="card-text">Km percorsi: {{ a.kmPercorsi }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

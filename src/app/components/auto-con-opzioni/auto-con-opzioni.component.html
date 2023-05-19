@@ -1,0 +1,32 @@
+<div class="container-fluid mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let a of automobiliConOpzioni">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ a.marca }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ a.modello }}</h6>
+              <p class="card-text">Prezzo: {{ a.prezzo }}</p>
+              <p class="card-text">Km percorsi: {{ a.kmPercorsi }}</p>
+
+              <h6 class="card-subtitle mb-2 text-muted">Opzioni:</h6>
+              <div class="d-flex">
+                <div class="mr-2">
+                  <div *ngFor="let opzioni of a.optionals">
+                    <p class="card-text">Livello di gravità: {{ opzioni.descrizione }}</p>
+                  </div>
+                </div>
+                <div class="mr-2">
+                  <div *ngFor="let opzioni of a.optionals">
+                    <p class="card-text">Spesa: {{ opzioni.prezzo }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

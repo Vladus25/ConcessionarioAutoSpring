@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="form-group">
+        <label for="automobileSelect">Seleziona un'automobile usata:</label>
+        <select class="form-control" id="automobileSelect" [(ngModel)]="selectedAutomobile" name="automobileSelect">
+          <option *ngFor="let automobile of automobiliUsate" [ngValue]="automobile">{{ automobile.marca }} - {{ automobile.modello }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="livGravitaInput">Livello di gravità:</label>
+        <input type="number" class="form-control" id="livGravitaInput" [(ngModel)]="riparazione.livGravita">
+      </div>
+      <div class="form-group">
+        <label for="spesaInput">Spesa:</label>
+        <input type="number" class="form-control" id="spesaInput" [(ngModel)]="riparazione.spesa" >
+      </div>
+      <div class="form-group">
+        <label for="tipoInput">Tipo:</label>
+        <input type="text" class="form-control" id="tipoInput" [(ngModel)]="riparazione.tipo">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="registraRiparazione()">Registra Riparazione</button>
+      </div>
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+      <div *ngIf="success" class="alert alert-success">
+        {{ success }}
+      </div>
+    </div>
+  </div>
+</div>
+
