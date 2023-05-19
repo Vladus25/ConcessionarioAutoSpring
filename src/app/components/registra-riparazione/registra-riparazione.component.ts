@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnectionDBService } from 'src/app/services/connection-db.service';
@@ -21,8 +22,8 @@ export class RegistraRiparazioneComponent {
     spesa: 0,
     tipo: ''
   };
-  error!: string;
-  success!: string;
+  success: string = "";
+  error: string = "";
 
   constructor(private http: ConnectionDBService, private router: Router) { }
 
@@ -40,9 +41,13 @@ export class RegistraRiparazioneComponent {
     }
 
     this.http.postRegistraRiparazioneAuto(this.selectedAutomobile.id, this.riparazione).subscribe(
-      (response) => {
-        this.success = response;
+      (response: HttpResponse<any>) => {
+        this.success = 'Riparazione registrata con successo.';
         this.resetForm();
+      },
+      (error) => {
+        this.error = 'Si è verificato un errore durante la registrazione della riparazione.';
+        this.success = "";
       }
     );
 
